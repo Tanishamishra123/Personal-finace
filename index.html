@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWise | Smart Wealth Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root { --primary: #2962ff; --dark: #0a0e1a; --light: #f0f2f7; --card: #ffffff; --text: #1a1f36; --gray: #6b7280; --success: #00c853; --radius: 20px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--text); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .logo { font-size: 1.7rem; font-weight: 800; display: flex; align-items: center; gap: 8px; color: var(--dark); text-decoration: none; }
+        .logo i { color: var(--primary); font-size: 1.8rem; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--gray); font-weight: 500; font-size: 0.95rem; transition: all 0.2s; padding: 8px 16px; border-radius: 8px; }
+        .nav-links a:hover { color: var(--primary); background: rgba(41,98,255,0.05); }
+        .btn-nav { background: var(--dark); color: #fff; padding: 10px 24px; border-radius: 50px; font-weight: 600; border: none; cursor: pointer; font-size: 0.95rem; transition: all 0.3s; }
+        .btn-nav:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(41,98,255,0.3); }
+        .hero { display: flex; align-items: center; justify-content: space-between; min-height: 100vh; padding: 120px 5% 80px; max-width: 1300px; margin: 0 auto; gap: 50px; }
+        .hero-left { flex: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(41,98,255,0.08); padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 24px; }
+        .hero-left h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; background: linear-gradient(135deg, #0a0e1a 30%, #2962ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-left p { font-size: 1.2rem; color: var(--gray); margin-bottom: 36px; max-width: 500px; line-height: 1.7; }
+        .hero-btns { display: flex; gap: 14px; margin-bottom: 48px; flex-wrap: wrap; }
+        .btn-primary { background: var(--dark); color: #fff; padding: 15px 30px; border-radius: 50px; font-weight: 600; font-size: 1rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .btn-primary:hover { background: var(--primary); transform: translateY(-3px); box-shadow: 0 12px 25px rgba(41,98,255,0.3); }
+        .btn-outline { background: transparent; color: var(--dark); padding: 15px 30px; border-radius: 50px; font-weight: 600; font-size: 1rem; border: 2px solid #d1d5db; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+        .hero-stats div h3 { font-size: 2rem; font-weight: 700; }
+        .hero-stats div p { font-size: 0.8rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+        .hero-right { flex: 1; background: var(--card); border-radius: 32px; padding: 32px; box-shadow: 0 25px 50px rgba(0,0,0,0.08); border: 1px solid #e5e7eb; }
+        .chart-bar-row { display: flex; align-items: flex-end; gap: 14px; height: 180px; margin: 20px 0 30px; }
+        .bar { flex: 1; background: linear-gradient(180deg, var(--primary), #90caf9); border-radius: 12px; }
+        .mini-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #f9fafb; border-radius: 14px; margin-bottom: 12px; cursor: pointer; transition: transform 0.2s; }
+        .mini-card:hover { transform: translateX(6px); }
+        .mini-icon { width: 40px; height: 40px; background: #eef2ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+        .mini-info { flex: 1; }
+        .mini-info h4 { font-size: 0.9rem; font-weight: 600; }
+        .mini-info p { font-size: 0.75rem; color: var(--gray); margin: 0; }
+        .mini-change { color: var(--success); font-weight: 600; font-size: 0.85rem; }
+        .section { padding: 100px 5%; }
+        .section-dark { background: var(--dark); color: #fff; }
+        .section h2 { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; }
+        .section > p { text-align: center; color: var(--gray); margin-bottom: 60px; font-size: 1.1rem; }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+        .feat-card { background: var(--card); border-radius: var(--radius); padding: 32px 24px; text-align: center; border: 1px solid #e5e7eb; transition: all 0.3s; cursor: pointer; }
+        .feat-card:hover { transform: translateY(-10px); box-shadow: 0 25px 40px rgba(0,0,0,0.12); }
+        .feat-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .feat-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .feat-card p { color: var(--gray); font-size: 0.9rem; line-height: 1.6; }
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-content p { font-size: 1.1rem; color: var(--gray); line-height: 1.8; margin-bottom: 30px; }
+        .about-stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin-top: 40px; }
+        .about-stats div { text-align: center; }
+        .about-stats div h3 { font-size: 2.5rem; color: var(--primary); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .pricing-card { background: var(--card); border-radius: var(--radius); padding: 40px 30px; text-align: center; border: 2px solid #e5e7eb; transition: all 0.3s; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .pricing-card.featured { border-color: var(--primary); }
+        .pricing-card .price { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 20px 0; }
+        .pricing-card ul { list-style: none; margin: 24px 0; text-align: left; }
+        .pricing-card ul li { padding: 8px 0; color: var(--gray); }
+        .pricing-card ul li i { color: var(--success); margin-right: 8px; }
+        .support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .support-card { background: var(--card); border-radius: var(--radius); padding: 32px; text-align: center; border: 1px solid #e5e7eb; transition: all 0.3s; cursor: pointer; }
+        .support-card:hover { transform: translateY(-6px); }
+        .support-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 16px; }
+        .footer { background: var(--dark); color: #aaa; text-align: center; padding: 60px 5%; }
+        .footer-links { display: flex; justify-content: center; gap: 32px; margin: 24px 0; flex-wrap: wrap; }
+        .footer-links a { color: #9ca3af; text-decoration: none; }
+        .footer-links a:hover { color: #fff; }
+        .login-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center; }
+        .login-overlay.active { display: flex; }
+        .login-modal { background: #fff; border-radius: 24px; padding: 44px 36px; width: 90%; max-width: 420px; text-align: center; }
+        .login-modal input { width: 100%; padding: 14px; margin: 8px 0; border: 1.5px solid #e5e7eb; border-radius: 12px; font-size: 1rem; }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--dark); color: #fff; padding: 16px 24px; border-radius: 12px; z-index: 10000; display: none; }
+        @media (max-width: 1024px) { .hero { flex-direction: column; text-align: center; } .features-grid { grid-template-columns: repeat(2, 1fr); } .pricing-grid, .support-grid { grid-template-columns: 1fr; max-width: 400px; } }
+        @media (max-width: 640px) { .hero-left h1 { font-size: 2.2rem; } .features-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body id="top">
+    <nav class="navbar"><a href="#top" class="logo"><i class="fas fa-chart-line"></i> FinWise</a><div class="nav-links"><a href="#features">Features</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#support">Support</a><button class="btn-nav" onclick="openLogin()">Sign In</button></div></nav>
+    <section class="hero" id="home"><div class="hero-left"><div class="hero-badge"><i class="fas fa-star"></i> Trusted by 500,000+ investors</div><h1>Take control of your financial future</h1><p>Track expenses, grow investments, and achieve your goals with our award-winning wealth management platform.</p><div class="hero-btns"><button class="btn-primary" onclick="openLogin()">Get Started Free <i class="fas fa-arrow-right"></i></button><button class="btn-outline" onclick="showDemo()"><i class="fas fa-play"></i> Watch Demo</button></div><div class="hero-stats"><div><h3>+</h3><p>Assets Managed</p></div><div><h3>4.9 ★</h3><p>User Rating</p></div><div><h3>500K+</h3><p>Active Users</p></div></div></div><div class="hero-right"><div style="display:flex;justify-content:space-between;margin-bottom:16px;"><span style="font-weight:700;">Portfolio Performance</span><span style="color:#00c853;font-weight:600;">↑ +12.4%</span></div><div class="chart-bar-row"><div class="bar" style="height:58%;"></div><div class="bar" style="height:85%;"></div><div class="bar" style="height:68%;"></div><div class="bar" style="height:90%;"></div><div class="bar" style="height:55%;"></div></div><div class="mini-card" onclick="showToast('Smart Analytics is active!')"><div class="mini-icon"><i class="fas fa-chart-pie"></i></div><div class="mini-info"><h4>Smart Analytics</h4><p>Real-time tracking</p></div><span class="mini-change">Active</span></div><div class="mini-card" onclick="showToast('256-bit Encryption secured!')"><div class="mini-icon"><i class="fas fa-shield"></i></div><div class="mini-info"><h4>256-bit Encryption</h4><p>Bank-level security</p></div><span class="mini-change">Secure</span></div></div></section>
+    <section class="section" id="features"><h2>Why Choose FinWise?</h2><p>Everything you need to master your finances</p><div class="features-grid"><div class="feat-card" onclick="showToast('Investment Tracking')"><i class="fas fa-chart-line"></i><h3>Investment Tracking</h3><p>Monitor stocks, crypto & real estate in real-time.</p></div><div class="feat-card" onclick="showToast('Expense Management')"><i class="fas fa-credit-card"></i><h3>Expense Management</h3><p>Auto-categorize spending and set smart budgets.</p></div><div class="feat-card" onclick="showToast('AI-Powered Insights')"><i class="fas fa-robot"></i><h3>AI-Powered Insights</h3><p>Personalized recommendations to grow wealth.</p></div><div class="feat-card" onclick="showToast('Military-Grade Security')"><i class="fas fa-lock"></i><h3>Military-Grade Security</h3><p>256-bit encryption with biometric auth.</p></div></div></section>
+    <section class="section section-dark" id="about"><h2>About FinWise</h2><p>Our mission is to democratize wealth management</p><div class="about-content"><p>FinWise was founded in 2020 with a simple mission: make professional-grade financial management accessible to everyone.</p><div class="about-stats"><div><h3>2020</h3><p>Founded</p></div><div><h3>500K+</h3><p>Users</p></div><div><h3>150+</h3><p>Countries</p></div><div><h3>24/7</h3><p>Support</p></div></div></div></section>
+    <section class="section" id="pricing"><h2>Simple, Transparent Pricing</h2><p>Choose the plan that fits your needs</p><div class="pricing-grid"><div class="pricing-card"><h3>Free</h3><div class="price"><span>/month</span></div><ul><li><i class="fas fa-check"></i> Basic Dashboard</li><li><i class="fas fa-check"></i> 5 Linked Accounts</li><li><i class="fas fa-check"></i> Monthly Reports</li></ul><button class="btn-primary" onclick="openLogin()">Get Started</button></div><div class="pricing-card featured"><h3>Premium ⭐</h3><div class="price">.99<span>/month</span></div><ul><li><i class="fas fa-check"></i> Advanced Analytics</li><li><i class="fas fa-check"></i> Unlimited Accounts</li><li><i class="fas fa-check"></i> AI-Powered Insights</li><li><i class="fas fa-check"></i> Priority Support 24/7</li></ul><button class="btn-primary" onclick="openLogin()">Start Free Trial</button></div><div class="pricing-card"><h3>Enterprise</h3><div class="price"><span>/month</span></div><ul><li><i class="fas fa-check"></i> Everything in Premium</li><li><i class="fas fa-check"></i> Team Management</li><li><i class="fas fa-check"></i> API Access</li></ul><button class="btn-outline" onclick="showToast('Contact sales@finwise.com')">Contact Sales</button></div></div></section>
+    <section class="section" id="support"><h2>Help & Support</h2><p>We're here to help you succeed</p><div class="support-grid"><div class="support-card" onclick="showToast('Live Chat available 24/7!')"><i class="fas fa-headset"></i><h3>Live Chat</h3><p>Chat with our support team in real-time.</p></div><div class="support-card" onclick="showToast('Email: support@finwise.com')"><i class="fas fa-envelope"></i><h3>Email Support</h3><p>We respond within 24 hours.</p></div><div class="support-card" onclick="showToast('Visit docs.finwise.com')"><i class="fas fa-book"></i><h3>Documentation</h3><p>Browse guides and API docs.</p></div></div></section>
+    <footer class="footer"><h2 style="color:#fff;font-size:1.8rem;">FinWise</h2><div class="footer-links"><a href="#home">Home</a><a href="#features">Features</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#support">Support</a></div><p>© 2024 FinWise Technologies. All rights reserved.</p></footer>
+    <div class="login-overlay" id="loginModal"><div class="login-modal"><i class="fas fa-chart-line" style="font-size:3rem;color:#2962ff;margin-bottom:12px;"></i><h2>Welcome Back</h2><p style="color:#6b7280;margin-bottom:24px;">Login to your financial dashboard</p><input type="email" id="loginEmail" placeholder="Email address" value="demo@finwise.io"><input type="password" id="loginPassword" placeholder="Password" value="demo123"><p id="loginError" style="color:#ef4444;font-size:0.85rem;display:none;"></p><button onclick="doLogin()" style="width:100%;padding:14px;background:#0a0e1a;color:#fff;border:none;border-radius:12px;font-weight:600;cursor:pointer;margin-top:12px;">Unlock Dashboard →</button><button onclick="closeLogin()" style="width:100%;padding:12px;background:transparent;color:#6b7280;border:1px solid #e5e7eb;border-radius:12px;cursor:pointer;margin-top:8px;">Cancel</button></div></div>
+    <div id="toast" class="toast"></div>
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        window.openLogin = () => document.getElementById('loginModal').classList.add('active');
+        window.closeLogin = () => document.getElementById('loginModal').classList.remove('active');
+        window.showDemo = () => alert('Demo video would play here!');
+        window.showToast = (msg) => { const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 3000); };
+        window.doLogin = async () => {
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            if (!email || !password) { document.getElementById('loginError').textContent = 'Please enter email and password'; document.getElementById('loginError').style.display = 'block'; return; }
+            try {
+                const res = await fetch(API_URL/auth/login, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password }) });
+                const data = await res.json();
+                if (data.success) { localStorage.setItem('finwise_token', data.token); localStorage.setItem('finwise_user', JSON.stringify(data.user)); window.location.href = 'dashboard.html'; }
+                else { document.getElementById('loginError').textContent = data.message || 'Login failed'; document.getElementById('loginError').style.display = 'block'; }
+            } catch (err) {
+                localStorage.setItem('finwise_token', 'offline_token'); localStorage.setItem('finwise_user', JSON.stringify({ fullName: 'Demo User', email }));
+                window.location.href = 'dashboard.html';
+            }
+        };
+        document.getElementById('loginModal').addEventListener('click', function(e) { if (e.target === this) closeLogin(); });
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }));
+    </script>
+</body>
+</html>
